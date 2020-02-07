@@ -1,5 +1,10 @@
 # Compiled class file
 *.class
+*.*class*
+
+# ANTLR4 generated files
+*.tokens
+*.interp
 
 # Log file
 *.log
