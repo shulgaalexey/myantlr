@@ -6,9 +6,9 @@ hdr  : row ;
 row  : field (',' field)* '\r'? '\n' ;
 
 field
-    :  TEXT
-    |  STRING
-    |
+    :  TEXT     # text
+    |  STRING   # string
+    |           # empty
     ;
 
 TEXT : ~[,\n\r"]+ ;

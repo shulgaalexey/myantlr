@@ -259,19 +259,49 @@ public class CSVParser extends Parser {
 	}
 
 	public static class FieldContext extends ParserRuleContext {
-		public TerminalNode TEXT() { return getToken(CSVParser.TEXT, 0); }
-		public TerminalNode STRING() { return getToken(CSVParser.STRING, 0); }
 		public FieldContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_field; }
+	 
+		public FieldContext() { }
+		public void copyFrom(FieldContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class StringContext extends FieldContext {
+		public TerminalNode STRING() { return getToken(CSVParser.STRING, 0); }
+		public StringContext(FieldContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSVListener ) ((CSVListener)listener).enterField(this);
+			if ( listener instanceof CSVListener ) ((CSVListener)listener).enterString(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSVListener ) ((CSVListener)listener).exitField(this);
+			if ( listener instanceof CSVListener ) ((CSVListener)listener).exitString(this);
+		}
+	}
+	public static class TextContext extends FieldContext {
+		public TerminalNode TEXT() { return getToken(CSVParser.TEXT, 0); }
+		public TextContext(FieldContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CSVListener ) ((CSVListener)listener).enterText(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CSVListener ) ((CSVListener)listener).exitText(this);
+		}
+	}
+	public static class EmptyContext extends FieldContext {
+		public EmptyContext(FieldContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CSVListener ) ((CSVListener)listener).enterEmpty(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CSVListener ) ((CSVListener)listener).exitEmpty(this);
 		}
 	}
 
@@ -283,6 +313,7 @@ public class CSVParser extends Parser {
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case TEXT:
+				_localctx = new TextContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(29);
@@ -290,6 +321,7 @@ public class CSVParser extends Parser {
 				}
 				break;
 			case STRING:
+				_localctx = new StringContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(30);
@@ -299,6 +331,7 @@ public class CSVParser extends Parser {
 			case T__0:
 			case T__1:
 			case T__2:
+				_localctx = new EmptyContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				}
