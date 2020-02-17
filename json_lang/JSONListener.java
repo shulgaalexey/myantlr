@@ -17,15 +17,53 @@ public interface JSONListener extends ParseTreeListener {
 	 */
 	void exitJson(JSONParser.JsonContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JSONParser#object}.
+	 * Enter a parse tree produced by the {@code AnObject}
+	 * labeled alternative in {@link JSONParser#object}.
 	 * @param ctx the parse tree
 	 */
-	void enterObject(JSONParser.ObjectContext ctx);
+	void enterAnObject(JSONParser.AnObjectContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JSONParser#object}.
+	 * Exit a parse tree produced by the {@code AnObject}
+	 * labeled alternative in {@link JSONParser#object}.
 	 * @param ctx the parse tree
 	 */
-	void exitObject(JSONParser.ObjectContext ctx);
+	void exitAnObject(JSONParser.AnObjectContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code EmptyObject}
+	 * labeled alternative in {@link JSONParser#object}.
+	 * @param ctx the parse tree
+	 */
+	void enterEmptyObject(JSONParser.EmptyObjectContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code EmptyObject}
+	 * labeled alternative in {@link JSONParser#object}.
+	 * @param ctx the parse tree
+	 */
+	void exitEmptyObject(JSONParser.EmptyObjectContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ArrayOfValues}
+	 * labeled alternative in {@link JSONParser#array}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayOfValues(JSONParser.ArrayOfValuesContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ArrayOfValues}
+	 * labeled alternative in {@link JSONParser#array}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayOfValues(JSONParser.ArrayOfValuesContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code EmptyArray}
+	 * labeled alternative in {@link JSONParser#array}.
+	 * @param ctx the parse tree
+	 */
+	void enterEmptyArray(JSONParser.EmptyArrayContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code EmptyArray}
+	 * labeled alternative in {@link JSONParser#array}.
+	 * @param ctx the parse tree
+	 */
+	void exitEmptyArray(JSONParser.EmptyArrayContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JSONParser#pair}.
 	 * @param ctx the parse tree
@@ -37,33 +75,51 @@ public interface JSONListener extends ParseTreeListener {
 	 */
 	void exitPair(JSONParser.PairContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JSONParser#array}.
+	 * Enter a parse tree produced by the {@code String}
+	 * labeled alternative in {@link JSONParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void enterArray(JSONParser.ArrayContext ctx);
+	void enterString(JSONParser.StringContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JSONParser#array}.
+	 * Exit a parse tree produced by the {@code String}
+	 * labeled alternative in {@link JSONParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void exitArray(JSONParser.ArrayContext ctx);
+	void exitString(JSONParser.StringContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JSONParser#name}.
+	 * Enter a parse tree produced by the {@code Atom}
+	 * labeled alternative in {@link JSONParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void enterName(JSONParser.NameContext ctx);
+	void enterAtom(JSONParser.AtomContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JSONParser#name}.
+	 * Exit a parse tree produced by the {@code Atom}
+	 * labeled alternative in {@link JSONParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void exitName(JSONParser.NameContext ctx);
+	void exitAtom(JSONParser.AtomContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JSONParser#value}.
+	 * Enter a parse tree produced by the {@code ObjectValue}
+	 * labeled alternative in {@link JSONParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void enterValue(JSONParser.ValueContext ctx);
+	void enterObjectValue(JSONParser.ObjectValueContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JSONParser#value}.
+	 * Exit a parse tree produced by the {@code ObjectValue}
+	 * labeled alternative in {@link JSONParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void exitValue(JSONParser.ValueContext ctx);
+	void exitObjectValue(JSONParser.ObjectValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ArrayValue}
+	 * labeled alternative in {@link JSONParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayValue(JSONParser.ArrayValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ArrayValue}
+	 * labeled alternative in {@link JSONParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayValue(JSONParser.ArrayValueContext ctx);
 }
