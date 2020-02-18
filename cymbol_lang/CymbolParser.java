@@ -18,7 +18,7 @@ public class CymbolParser extends Parser {
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
-		T__17=18, T__18=19, T__19=20, T__20=21, ID=22, INT=23, WS=24, SL_COMMENT=25;
+		T__17=18, K_FLOAT=19, K_INT=20, K_VOID=21, ID=22, INT=23, WS=24, SL_COMMENT=25;
 	public static final int
 		RULE_file = 0, RULE_varDecl = 1, RULE_type = 2, RULE_functionDecl = 3, 
 		RULE_formalParameters = 4, RULE_formalParameter = 5, RULE_block = 6, RULE_stat = 7, 
@@ -33,17 +33,17 @@ public class CymbolParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'='", "';'", "'float'", "'int'", "'void'", "'('", "')'", "','", 
-			"'{'", "'}'", "'if'", "'then'", "'else'", "'return'", "'['", "']'", "'-'", 
-			"'!'", "'*'", "'+'", "'=='"
+			null, "'='", "';'", "'('", "')'", "','", "'{'", "'}'", "'if'", "'then'", 
+			"'else'", "'return'", "'['", "']'", "'-'", "'!'", "'*'", "'+'", "'=='", 
+			"'float'", "'int'", "'void'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, null, null, null, null, null, null, null, "ID", "INT", 
-			"WS", "SL_COMMENT"
+			null, null, null, null, null, null, null, "K_FLOAT", "K_INT", "K_VOID", 
+			"ID", "INT", "WS", "SL_COMMENT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -156,7 +156,7 @@ public class CymbolParser extends Parser {
 				setState(24); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << T__3) | (1L << T__4))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << K_FLOAT) | (1L << K_INT) | (1L << K_VOID))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -231,6 +231,9 @@ public class CymbolParser extends Parser {
 	}
 
 	public static class TypeContext extends ParserRuleContext {
+		public TerminalNode K_FLOAT() { return getToken(CymbolParser.K_FLOAT, 0); }
+		public TerminalNode K_INT() { return getToken(CymbolParser.K_INT, 0); }
+		public TerminalNode K_VOID() { return getToken(CymbolParser.K_VOID, 0); }
 		public TypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -254,7 +257,7 @@ public class CymbolParser extends Parser {
 			{
 			setState(34);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << T__3) | (1L << T__4))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << K_FLOAT) | (1L << K_INT) | (1L << K_VOID))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -312,11 +315,11 @@ public class CymbolParser extends Parser {
 			setState(37);
 			match(ID);
 			setState(38);
-			match(T__5);
+			match(T__2);
 			setState(40);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << T__3) | (1L << T__4))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << K_FLOAT) | (1L << K_INT) | (1L << K_VOID))) != 0)) {
 				{
 				setState(39);
 				formalParameters();
@@ -324,7 +327,7 @@ public class CymbolParser extends Parser {
 			}
 
 			setState(42);
-			match(T__6);
+			match(T__3);
 			setState(43);
 			block();
 			}
@@ -373,11 +376,11 @@ public class CymbolParser extends Parser {
 			setState(50);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__7) {
+			while (_la==T__4) {
 				{
 				{
 				setState(46);
-				match(T__7);
+				match(T__4);
 				setState(47);
 				formalParameter();
 				}
@@ -470,11 +473,11 @@ public class CymbolParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(56);
-			match(T__8);
+			match(T__5);
 			setState(60);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << T__3) | (1L << T__4) | (1L << T__5) | (1L << T__8) | (1L << T__10) | (1L << T__13) | (1L << T__16) | (1L << T__17) | (1L << ID) | (1L << INT))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << T__5) | (1L << T__7) | (1L << T__10) | (1L << T__13) | (1L << T__14) | (1L << K_FLOAT) | (1L << K_INT) | (1L << K_VOID) | (1L << ID) | (1L << INT))) != 0)) {
 				{
 				{
 				setState(57);
@@ -486,7 +489,7 @@ public class CymbolParser extends Parser {
 				_la = _input.LA(1);
 			}
 			setState(63);
-			match(T__9);
+			match(T__6);
 			}
 		}
 		catch (RecognitionException re) {
@@ -559,11 +562,11 @@ public class CymbolParser extends Parser {
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(67);
-				match(T__10);
+				match(T__7);
 				setState(68);
 				expr(0);
 				setState(69);
-				match(T__11);
+				match(T__8);
 				setState(70);
 				stat();
 				setState(73);
@@ -572,7 +575,7 @@ public class CymbolParser extends Parser {
 				case 1:
 					{
 					setState(71);
-					match(T__12);
+					match(T__9);
 					setState(72);
 					stat();
 					}
@@ -584,11 +587,11 @@ public class CymbolParser extends Parser {
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(75);
-				match(T__13);
+				match(T__10);
 				setState(77);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__16) | (1L << T__17) | (1L << ID) | (1L << INT))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << T__13) | (1L << T__14) | (1L << ID) | (1L << INT))) != 0)) {
 					{
 					setState(76);
 					expr(0);
@@ -635,28 +638,163 @@ public class CymbolParser extends Parser {
 	}
 
 	public static class ExprContext extends ParserRuleContext {
+		public ExprContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_expr; }
+	 
+		public ExprContext() { }
+		public void copyFrom(ExprContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class CallContext extends ExprContext {
 		public TerminalNode ID() { return getToken(CymbolParser.ID, 0); }
 		public ExprListContext exprList() {
 			return getRuleContext(ExprListContext.class,0);
 		}
+		public CallContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterCall(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitCall(this);
+		}
+	}
+	public static class NotContext extends ExprContext {
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public NotContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterNot(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitNot(this);
+		}
+	}
+	public static class MultContext extends ExprContext {
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
 		}
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
-		public TerminalNode INT() { return getToken(CymbolParser.INT, 0); }
-		public ExprContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_expr; }
+		public MultContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterExpr(this);
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterMult(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitExpr(this);
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitMult(this);
+		}
+	}
+	public static class AddSubContext extends ExprContext {
+		public List<ExprContext> expr() {
+			return getRuleContexts(ExprContext.class);
+		}
+		public ExprContext expr(int i) {
+			return getRuleContext(ExprContext.class,i);
+		}
+		public AddSubContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterAddSub(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitAddSub(this);
+		}
+	}
+	public static class EqualContext extends ExprContext {
+		public List<ExprContext> expr() {
+			return getRuleContexts(ExprContext.class);
+		}
+		public ExprContext expr(int i) {
+			return getRuleContext(ExprContext.class,i);
+		}
+		public EqualContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterEqual(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitEqual(this);
+		}
+	}
+	public static class VarContext extends ExprContext {
+		public TerminalNode ID() { return getToken(CymbolParser.ID, 0); }
+		public VarContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterVar(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitVar(this);
+		}
+	}
+	public static class ParensContext extends ExprContext {
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public ParensContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterParens(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitParens(this);
+		}
+	}
+	public static class IndexContext extends ExprContext {
+		public List<ExprContext> expr() {
+			return getRuleContexts(ExprContext.class);
+		}
+		public ExprContext expr(int i) {
+			return getRuleContext(ExprContext.class,i);
+		}
+		public IndexContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterIndex(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitIndex(this);
+		}
+	}
+	public static class NegateContext extends ExprContext {
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public NegateContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterNegate(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitNegate(this);
+		}
+	}
+	public static class IntContext extends ExprContext {
+		public TerminalNode INT() { return getToken(CymbolParser.INT, 0); }
+		public IntContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).enterInt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CymbolListener ) ((CymbolListener)listener).exitInt(this);
 		}
 	}
 
@@ -676,19 +814,23 @@ public class CymbolParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(112);
+			setState(107);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 			case 1:
 				{
+				_localctx = new CallContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+
 				setState(91);
 				match(ID);
 				setState(92);
-				match(T__5);
+				match(T__2);
 				setState(94);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__16) | (1L << T__17) | (1L << ID) | (1L << INT))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << T__13) | (1L << T__14) | (1L << ID) | (1L << INT))) != 0)) {
 					{
 					setState(93);
 					exprList();
@@ -696,57 +838,60 @@ public class CymbolParser extends Parser {
 				}
 
 				setState(96);
-				match(T__6);
+				match(T__3);
 				}
 				break;
 			case 2:
 				{
+				_localctx = new NegateContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(97);
-				match(ID);
+				match(T__13);
 				setState(98);
-				match(T__14);
-				setState(99);
-				expr(0);
-				setState(100);
-				match(T__15);
+				expr(8);
 				}
 				break;
 			case 3:
 				{
-				setState(102);
-				match(T__16);
-				setState(103);
-				expr(8);
+				_localctx = new NotContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(99);
+				match(T__14);
+				setState(100);
+				expr(7);
 				}
 				break;
 			case 4:
 				{
-				setState(104);
-				match(T__17);
-				setState(105);
-				expr(7);
+				_localctx = new VarContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(101);
+				match(ID);
 				}
 				break;
 			case 5:
 				{
-				setState(106);
-				match(ID);
+				_localctx = new IntContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(102);
+				match(INT);
 				}
 				break;
 			case 6:
 				{
-				setState(107);
-				match(INT);
-				}
-				break;
-			case 7:
-				{
-				setState(108);
-				match(T__5);
-				setState(109);
+				_localctx = new ParensContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(103);
+				match(T__2);
+				setState(104);
 				expr(0);
-				setState(110);
-				match(T__6);
+				setState(105);
+				match(T__3);
 				}
 				break;
 			}
@@ -764,25 +909,25 @@ public class CymbolParser extends Parser {
 					switch ( getInterpreter().adaptivePredict(_input,11,_ctx) ) {
 					case 1:
 						{
-						_localctx = new ExprContext(_parentctx, _parentState);
+						_localctx = new MultContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(114);
+						setState(109);
 						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
-						setState(115);
-						match(T__18);
-						setState(116);
+						setState(110);
+						match(T__15);
+						setState(111);
 						expr(7);
 						}
 						break;
 					case 2:
 						{
-						_localctx = new ExprContext(_parentctx, _parentState);
+						_localctx = new AddSubContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(117);
+						setState(112);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(118);
+						setState(113);
 						_la = _input.LA(1);
-						if ( !(_la==T__16 || _la==T__19) ) {
+						if ( !(_la==T__13 || _la==T__16) ) {
 						_errHandler.recoverInline(this);
 						}
 						else {
@@ -790,20 +935,34 @@ public class CymbolParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(119);
+						setState(114);
 						expr(6);
 						}
 						break;
 					case 3:
 						{
-						_localctx = new ExprContext(_parentctx, _parentState);
+						_localctx = new EqualContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(120);
+						setState(115);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(121);
-						match(T__20);
-						setState(122);
+						setState(116);
+						match(T__17);
+						setState(117);
 						expr(5);
+						}
+						break;
+					case 4:
+						{
+						_localctx = new IndexContext(new ExprContext(_parentctx, _parentState));
+						pushNewRecursionContext(_localctx, _startState, RULE_expr);
+						setState(118);
+						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
+						setState(119);
+						match(T__11);
+						setState(120);
+						expr(0);
+						setState(121);
+						match(T__12);
 						}
 						break;
 					}
@@ -859,11 +1018,11 @@ public class CymbolParser extends Parser {
 			setState(133);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__7) {
+			while (_la==T__4) {
 				{
 				{
 				setState(129);
-				match(T__7);
+				match(T__4);
 				setState(130);
 				expr(0);
 				}
@@ -900,6 +1059,8 @@ public class CymbolParser extends Parser {
 			return precpred(_ctx, 5);
 		case 2:
 			return precpred(_ctx, 4);
+		case 3:
+			return precpred(_ctx, 9);
 		}
 		return true;
 	}
@@ -912,36 +1073,36 @@ public class CymbolParser extends Parser {
 		"\6\16\6\66\13\6\3\7\3\7\3\7\3\b\3\b\7\b=\n\b\f\b\16\b@\13\b\3\b\3\b\3"+
 		"\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5\tL\n\t\3\t\3\t\5\tP\n\t\3\t\3\t\3\t\3"+
 		"\t\3\t\3\t\3\t\3\t\3\t\5\t[\n\t\3\n\3\n\3\n\3\n\5\na\n\n\3\n\3\n\3\n\3"+
-		"\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\5\ns\n\n\3\n\3\n\3"+
+		"\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\5\nn\n\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3"+
 		"\n\3\n\3\n\3\n\3\n\3\n\3\n\7\n~\n\n\f\n\16\n\u0081\13\n\3\13\3\13\3\13"+
 		"\7\13\u0086\n\13\f\13\16\13\u0089\13\13\3\13\2\3\22\f\2\4\6\b\n\f\16\20"+
-		"\22\24\2\4\3\2\5\7\4\2\23\23\26\26\2\u0098\2\30\3\2\2\2\4\34\3\2\2\2\6"+
-		"$\3\2\2\2\b&\3\2\2\2\n/\3\2\2\2\f\67\3\2\2\2\16:\3\2\2\2\20Z\3\2\2\2\22"+
-		"r\3\2\2\2\24\u0082\3\2\2\2\26\31\5\b\5\2\27\31\5\4\3\2\30\26\3\2\2\2\30"+
-		"\27\3\2\2\2\31\32\3\2\2\2\32\30\3\2\2\2\32\33\3\2\2\2\33\3\3\2\2\2\34"+
-		"\35\5\6\4\2\35 \7\30\2\2\36\37\7\3\2\2\37!\5\22\n\2 \36\3\2\2\2 !\3\2"+
-		"\2\2!\"\3\2\2\2\"#\7\4\2\2#\5\3\2\2\2$%\t\2\2\2%\7\3\2\2\2&\'\5\6\4\2"+
-		"\'(\7\30\2\2(*\7\b\2\2)+\5\n\6\2*)\3\2\2\2*+\3\2\2\2+,\3\2\2\2,-\7\t\2"+
-		"\2-.\5\16\b\2.\t\3\2\2\2/\64\5\f\7\2\60\61\7\n\2\2\61\63\5\f\7\2\62\60"+
-		"\3\2\2\2\63\66\3\2\2\2\64\62\3\2\2\2\64\65\3\2\2\2\65\13\3\2\2\2\66\64"+
-		"\3\2\2\2\678\5\6\4\289\7\30\2\29\r\3\2\2\2:>\7\13\2\2;=\5\20\t\2<;\3\2"+
-		"\2\2=@\3\2\2\2><\3\2\2\2>?\3\2\2\2?A\3\2\2\2@>\3\2\2\2AB\7\f\2\2B\17\3"+
-		"\2\2\2C[\5\16\b\2D[\5\4\3\2EF\7\r\2\2FG\5\22\n\2GH\7\16\2\2HK\5\20\t\2"+
-		"IJ\7\17\2\2JL\5\20\t\2KI\3\2\2\2KL\3\2\2\2L[\3\2\2\2MO\7\20\2\2NP\5\22"+
+		"\22\24\2\4\3\2\25\27\4\2\20\20\23\23\2\u0098\2\30\3\2\2\2\4\34\3\2\2\2"+
+		"\6$\3\2\2\2\b&\3\2\2\2\n/\3\2\2\2\f\67\3\2\2\2\16:\3\2\2\2\20Z\3\2\2\2"+
+		"\22m\3\2\2\2\24\u0082\3\2\2\2\26\31\5\b\5\2\27\31\5\4\3\2\30\26\3\2\2"+
+		"\2\30\27\3\2\2\2\31\32\3\2\2\2\32\30\3\2\2\2\32\33\3\2\2\2\33\3\3\2\2"+
+		"\2\34\35\5\6\4\2\35 \7\30\2\2\36\37\7\3\2\2\37!\5\22\n\2 \36\3\2\2\2 "+
+		"!\3\2\2\2!\"\3\2\2\2\"#\7\4\2\2#\5\3\2\2\2$%\t\2\2\2%\7\3\2\2\2&\'\5\6"+
+		"\4\2\'(\7\30\2\2(*\7\5\2\2)+\5\n\6\2*)\3\2\2\2*+\3\2\2\2+,\3\2\2\2,-\7"+
+		"\6\2\2-.\5\16\b\2.\t\3\2\2\2/\64\5\f\7\2\60\61\7\7\2\2\61\63\5\f\7\2\62"+
+		"\60\3\2\2\2\63\66\3\2\2\2\64\62\3\2\2\2\64\65\3\2\2\2\65\13\3\2\2\2\66"+
+		"\64\3\2\2\2\678\5\6\4\289\7\30\2\29\r\3\2\2\2:>\7\b\2\2;=\5\20\t\2<;\3"+
+		"\2\2\2=@\3\2\2\2><\3\2\2\2>?\3\2\2\2?A\3\2\2\2@>\3\2\2\2AB\7\t\2\2B\17"+
+		"\3\2\2\2C[\5\16\b\2D[\5\4\3\2EF\7\n\2\2FG\5\22\n\2GH\7\13\2\2HK\5\20\t"+
+		"\2IJ\7\f\2\2JL\5\20\t\2KI\3\2\2\2KL\3\2\2\2L[\3\2\2\2MO\7\r\2\2NP\5\22"+
 		"\n\2ON\3\2\2\2OP\3\2\2\2PQ\3\2\2\2Q[\7\4\2\2RS\5\22\n\2ST\7\3\2\2TU\5"+
 		"\22\n\2UV\7\4\2\2V[\3\2\2\2WX\5\22\n\2XY\7\4\2\2Y[\3\2\2\2ZC\3\2\2\2Z"+
 		"D\3\2\2\2ZE\3\2\2\2ZM\3\2\2\2ZR\3\2\2\2ZW\3\2\2\2[\21\3\2\2\2\\]\b\n\1"+
-		"\2]^\7\30\2\2^`\7\b\2\2_a\5\24\13\2`_\3\2\2\2`a\3\2\2\2ab\3\2\2\2bs\7"+
-		"\t\2\2cd\7\30\2\2de\7\21\2\2ef\5\22\n\2fg\7\22\2\2gs\3\2\2\2hi\7\23\2"+
-		"\2is\5\22\n\njk\7\24\2\2ks\5\22\n\tls\7\30\2\2ms\7\31\2\2no\7\b\2\2op"+
-		"\5\22\n\2pq\7\t\2\2qs\3\2\2\2r\\\3\2\2\2rc\3\2\2\2rh\3\2\2\2rj\3\2\2\2"+
-		"rl\3\2\2\2rm\3\2\2\2rn\3\2\2\2s\177\3\2\2\2tu\f\b\2\2uv\7\25\2\2v~\5\22"+
-		"\n\twx\f\7\2\2xy\t\3\2\2y~\5\22\n\bz{\f\6\2\2{|\7\27\2\2|~\5\22\n\7}t"+
-		"\3\2\2\2}w\3\2\2\2}z\3\2\2\2~\u0081\3\2\2\2\177}\3\2\2\2\177\u0080\3\2"+
-		"\2\2\u0080\23\3\2\2\2\u0081\177\3\2\2\2\u0082\u0087\5\22\n\2\u0083\u0084"+
-		"\7\n\2\2\u0084\u0086\5\22\n\2\u0085\u0083\3\2\2\2\u0086\u0089\3\2\2\2"+
+		"\2]^\7\30\2\2^`\7\5\2\2_a\5\24\13\2`_\3\2\2\2`a\3\2\2\2ab\3\2\2\2bn\7"+
+		"\6\2\2cd\7\20\2\2dn\5\22\n\nef\7\21\2\2fn\5\22\n\tgn\7\30\2\2hn\7\31\2"+
+		"\2ij\7\5\2\2jk\5\22\n\2kl\7\6\2\2ln\3\2\2\2m\\\3\2\2\2mc\3\2\2\2me\3\2"+
+		"\2\2mg\3\2\2\2mh\3\2\2\2mi\3\2\2\2n\177\3\2\2\2op\f\b\2\2pq\7\22\2\2q"+
+		"~\5\22\n\trs\f\7\2\2st\t\3\2\2t~\5\22\n\buv\f\6\2\2vw\7\24\2\2w~\5\22"+
+		"\n\7xy\f\13\2\2yz\7\16\2\2z{\5\22\n\2{|\7\17\2\2|~\3\2\2\2}o\3\2\2\2}"+
+		"r\3\2\2\2}u\3\2\2\2}x\3\2\2\2~\u0081\3\2\2\2\177}\3\2\2\2\177\u0080\3"+
+		"\2\2\2\u0080\23\3\2\2\2\u0081\177\3\2\2\2\u0082\u0087\5\22\n\2\u0083\u0084"+
+		"\7\7\2\2\u0084\u0086\5\22\n\2\u0085\u0083\3\2\2\2\u0086\u0089\3\2\2\2"+
 		"\u0087\u0085\3\2\2\2\u0087\u0088\3\2\2\2\u0088\25\3\2\2\2\u0089\u0087"+
-		"\3\2\2\2\20\30\32 *\64>KOZ`r}\177\u0087";
+		"\3\2\2\2\20\30\32 *\64>KOZ`m}\177\u0087";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

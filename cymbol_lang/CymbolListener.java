@@ -87,15 +87,125 @@ public interface CymbolListener extends ParseTreeListener {
 	 */
 	void exitStat(CymbolParser.StatContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link CymbolParser#expr}.
+	 * Enter a parse tree produced by the {@code Call}
+	 * labeled alternative in {@link CymbolParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpr(CymbolParser.ExprContext ctx);
+	void enterCall(CymbolParser.CallContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CymbolParser#expr}.
+	 * Exit a parse tree produced by the {@code Call}
+	 * labeled alternative in {@link CymbolParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpr(CymbolParser.ExprContext ctx);
+	void exitCall(CymbolParser.CallContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Not}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterNot(CymbolParser.NotContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Not}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitNot(CymbolParser.NotContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Mult}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterMult(CymbolParser.MultContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Mult}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitMult(CymbolParser.MultContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code AddSub}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterAddSub(CymbolParser.AddSubContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code AddSub}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitAddSub(CymbolParser.AddSubContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Equal}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterEqual(CymbolParser.EqualContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Equal}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitEqual(CymbolParser.EqualContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Var}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterVar(CymbolParser.VarContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Var}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitVar(CymbolParser.VarContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Parens}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterParens(CymbolParser.ParensContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Parens}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitParens(CymbolParser.ParensContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Index}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterIndex(CymbolParser.IndexContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Index}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitIndex(CymbolParser.IndexContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Negate}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterNegate(CymbolParser.NegateContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Negate}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitNegate(CymbolParser.NegateContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Int}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterInt(CymbolParser.IntContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Int}
+	 * labeled alternative in {@link CymbolParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitInt(CymbolParser.IntContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link CymbolParser#exprList}.
 	 * @param ctx the parse tree
