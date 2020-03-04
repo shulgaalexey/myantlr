@@ -88,6 +88,6 @@ docker start 1c0cc4922bee
 ```
 //docker tag local-image:tagname new-repo:tagname
 docker tag 6d0557fcfc07 shulgaalexey/myantlr:myantlr03
-docker login -u "shulgaalexey" -p "qwer1357" docker.io && docker push shulgaalexey/myantlr:myantlr03
-docker login -u "shulgaalexey" -p "qwer1357" docker.io && docker pull shulgaalexey/myantlr:myantlr03
+docker login -u "shulgaalexey" -p "password" docker.io && docker push shulgaalexey/myantlr:myantlr03
+docker login -u "shulgaalexey" -p "password" docker.io && docker pull shulgaalexey/myantlr:myantlr03
 ```

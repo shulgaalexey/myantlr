@@ -4,45 +4,50 @@ Agenda
   - What is it?
   - How to program grammars?
   - How do we use it for LEQL?
+  - Demo
   - Q&A
 
-This is a simple project to learn ANTLR4
 
-Note, to pull/push the container to/from Mac it is required to run a single line command
+## What is it?
 
-```
-docker login -u "shulgaalexey" -p "password" docker.io && docker pull shulgaalexey/myantlr:myantlr02
-```
-or correspondingly
-```
-docker login -u "shulgaalexey" -p "password" docker.io && docker push shulgaalexey/myantlr:myantlr02
-```
+ANTLR4 is toolkit and framework to specify language grammar and inplement its recognition and processing
+
+ANTLR framework contains:
+ - Lexer, which splits input string on tokens
+ - Parser, which checks if the sequence of tokens follows the grammar rules
+
+ANTLR toolkit contains:
+ - Libs with grammar processing, tokenising, listeners, walkers, etc
+ - Skeleton builder, taking grammar and providing java classes with language processing
+ - Debug utils, for example, printing token sequence or parsed tree of the input string
 
 
+## How to program grammars?
+
+  1. Define lexer and parser grammar
+  2. Generate java classes
+  3. Add custom code to listener or tree walker
+
+## How do we use it for LEQL?
 
 
-# Container run
+## Demo
+
+### Installation
+
+Run a container
 ```
-//docker run -ti ubuntu /bin/bash
-docker run -ti -m 512M openjdk:8u181-jdk
-apt-get update
-apt-get upgrade
+docker run -ti ubuntu /bin/bash
+apt update && apt upgrade -y
 ```
 
-# Install Java 11
+Install Java 11 and other useful things
 ```
-apt-get install openjdk-11-jre openjdk-11-jdk
-```
-
-# Install git and curl
-```
-apt-get install git-all
-apt-get install curl
+apt install openjdk-11-jre openjdk-11-jdk curl git-all vim -y
 ```
 
-# VIM install
+Configure VIM, add NERDTree and show ANTLR syntax
 ```
-apt-get install vim
 git clone https://github.com/scrooloose/nerdtree.git ~/.vim/pack/vendor/start/nerdtree
 vim -u NONE -c "helptags ~/.vim/pack/vendor/start/nerdtree/doc" -c q
 mkdir -p ~/.vim/syntax && cd ~/.vim/syntax
@@ -55,22 +60,24 @@ set hlsearch
 au BufRead,BufNewFile *.g4 set filetype=antlr4
 ```
 
-# ANTLR install
+Install ANTLR
 ```
 cd /usr/local/lib
 curl -O https://www.antlr.org/download/antlr-4.8-complete.jar
 ```
 
-# Setup bash
+Setup bash aliases
 ```
-vim .bash_profile
+vim ~/.bashrc
 alias ll='ls -lGa'
 export CLASSPATH=".:/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH"
 alias antlr4='java -jar /usr/local/lib/antlr-4.8-complete.jar'
 alias grun='java org.antlr.v4.runtime.misc.TestRig'
+
+source ~/.bashrc
 ```
 
-# Test ANTLR installed correctly
+Test if ANTLR installed correctly
 ```
 java -jar /usr/local/lib/antlr-4.8-complete.jar
 or
@@ -79,21 +86,29 @@ or
 antlr4
 ```
 
-# Run another docker console
-```
-docker ps -a
-docker exec -it 1c0cc4922bee bash
-```
+### Hello, Calculator
 
-# Start a container
-```
-docker start 1c0cc4922bee
-```
+ 1. Define CalcLexer.g4 and Calc.g4
+ 2. Create language app skeleton:
+    ```
+	antlr4 Calc.g4
+	javac Calc*.java
+	```
+ 3. Debug with grun:
+    ```
+	grun Calc prog -tokens
+	grun Calc prog -tree
+	grun Calc prog -tree -file t.expr
+	```
+ 4. Implement simple test app MyCalc.java
+ 5. Compile and run it:
+ ```
+ javac MyCalc.java Calc*.java
+ java MyCalc t.expr
+ ```
+ 6. Implement custom MyListener and re-compile
+ ```
+ javac MyCalc.java Calc*.java && java MyCalc t.expr
+ ```
 
-# Commit snf push a new image to the repository using the CLI
-```
-//docker tag local-image:tagname new-repo:tagname
-docker tag 6d0557fcfc07 shulgaalexey/myantlr:myantlr03
-docker login -u "shulgaalexey" -p "qwer1357" docker.io && docker push shulgaalexey/myantlr:myantlr03
-docker login -u "shulgaalexey" -p "qwer1357" docker.io && docker pull shulgaalexey/myantlr:myantlr03
-```
+## Q&A
