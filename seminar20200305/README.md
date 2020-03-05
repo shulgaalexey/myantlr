@@ -10,7 +10,7 @@ Agenda
 
 ## What is it?
 
-ANTLR4 is toolkit and framework to specify language grammar and inplement its recognition and processing
+ANTLR4 is toolkit and framework to specify language grammar and implement its recognition and processing
 
 ANTLR framework contains:
  - Lexer, which splits input string on tokens
@@ -29,6 +29,14 @@ ANTLR toolkit contains:
   3. Add custom code to listener or tree walker
 
 ## How do we use it for LEQL?
+  - We have LEQL grammar specified in logentreis-leql-core (LeqlLexer.g4 and LeqlParser.g4)
+  - Custom LeqlListener (and few more) is implemented based on auto generated LeqlParserBaseListener
+    - We build task graph and validate some input there
+  - Search query string is processed in the DefaultQueryParser.java as following:
+    1. LeqlParser is created and search query is passed to it
+	2. ParseTree is constructed, root is `query`
+	3. LeqlListener is created
+	4. Tree is walked with our LeqlListener
 
 
 ## Demo
