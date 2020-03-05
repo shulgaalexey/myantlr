@@ -2,7 +2,7 @@
 
 Agenda
   - What is it?
-  - How to program grammars?
+  - How to program a language?
   - How do we use it for LEQL?
   - Demo
   - Q&A
@@ -15,18 +15,20 @@ ANTLR4 is toolkit and framework to specify language grammar and implement its re
 ANTLR framework contains:
  - Lexer, which splits input string on tokens
  - Parser, which checks if the sequence of tokens follows the grammar rules
+ - Listener and Visitor, which are called during parsed tree traversal
+ - Error handling
 
 ANTLR toolkit contains:
- - Libs with grammar processing, tokenising, listeners, walkers, etc (LEQL runtime)
- - Skeleton builder, taking grammar and providing java classes with language processing
+ - Libs with grammar processing, tokenisers, walkers, etc (LEQL runtime)
+ - Code generator, taking grammar and providing java classes for language processing
  - Debug utils, for example, printing token sequence or parsed tree of the input string
 
 
-## How to program grammars?
+## How to program a language?
 
   1. Define lexer and parser grammar
   2. Generate java classes
-  3. Add custom code to listener or tree walker
+  3. Add custom code to listener or visitor or error handler
 
 ## How do we use it for LEQL?
   - We have LEQL grammar specified in logentreis-leql-core (LeqlLexer.g4 and LeqlParser.g4)
