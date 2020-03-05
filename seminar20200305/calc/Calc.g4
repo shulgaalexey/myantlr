@@ -6,20 +6,13 @@ prog: stat+ ;
 
 stat :   expr NEWLINE           # printExpr
      |   ID '=' expr NEWLINE    # assign
-     |   clear                  # clr
      |   NEWLINE                # blank
      ;
 
-expr :   expr op=('*'|'/') expr    # MulDiv
-     |   expr op=('+'|'-') expr    # AddSub
+expr :   expr (MUL|DIV) expr    # MulDiv
+     |   expr (ADD|SUB) expr    # AddSub
      |   INT                    # int
      |   ID                     # id
      |   '(' expr ')'           # parens
      ;
 
-clear : 'clr' ;
-
-MUL  :   '*' ;
-DIV  :   '/' ;
-ADD  :   '+' ;
-SUB  :   '-' ;
