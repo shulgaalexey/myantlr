@@ -17,7 +17,7 @@ ANTLR framework contains:
  - Parser, which checks if the sequence of tokens follows the grammar rules
 
 ANTLR toolkit contains:
- - Libs with grammar processing, tokenising, listeners, walkers, etc
+ - Libs with grammar processing, tokenising, listeners, walkers, etc (LEQL runtime)
  - Skeleton builder, taking grammar and providing java classes with language processing
  - Debug utils, for example, printing token sequence or parsed tree of the input string
 
@@ -37,7 +37,7 @@ ANTLR toolkit contains:
 
 Run a container
 ```
-docker run -ti ubuntu /bin/bash
+docker run -it ubuntu /bin/bash
 apt update && apt upgrade -y
 ```
 
@@ -88,8 +88,8 @@ antlr4
 
 ### Hello, Calculator
 
- 1. Define CalcLexer.g4 and Calc.g4
- 2. Create language app skeleton:
+ 1. Define CalcL.g4 and Calc.g4
+ 2. Create language app skeleton (generate code based on grammar):
     ```
 	antlr4 Calc.g4
 	javac Calc*.java
@@ -100,6 +100,7 @@ antlr4
 	grun Calc prog -tree
 	grun Calc prog -tree -file t.expr
 	```
+	use `(a+b)*3` as input
  4. Implement simple test app MyCalc.java
  5. Compile and run it:
  ```
@@ -110,5 +111,20 @@ antlr4
  ```
  javac MyCalc.java Calc*.java && java MyCalc t.expr
  ```
+
+### Hello, LEQL
+
+ 1. Copy LEQL grammar into folder
+ 2. Create leql app skeleton (generate code based on grammar):
+    ```
+    antlr4 LeqlLexer.g4
+    antlr4 LeqlParser.g4
+	javac Leql*.java
+    ```
+ 2. Create and run leql app:
+    ```
+    javac MyLeql.java Leql*.java && java MyLeql t.leql
+	```
+	use `where(addr=IP(127.0.0.1/12)) calculate(count)` as input
 
 ## Q&A
